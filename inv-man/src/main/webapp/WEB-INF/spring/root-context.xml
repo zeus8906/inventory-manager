@@ -5,4 +5,6 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		
+	<import resource="db/datasource.xml"/>
+	<import resource="db/hibernate.xml"/>
 </beans>
