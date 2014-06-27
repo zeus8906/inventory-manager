@@ -26,8 +26,10 @@ public class Block {
     private long blockId;
     @Column(name = "fridge")
     private boolean isFridge;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "warehouse")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "blockId")
     private Set<Slot> slots;
+    @Column(name = "warehouseId")
+    private long warehouseId;
 
     public long getBlockId() {
         return blockId;

@@ -25,7 +25,7 @@ public interface DataAccessObject<T> {
      * 
      * @return A collection of entitites
      */
-    Collection<T> findAll();
+    Collection<T> listAll();
 
     /**
      * Find entity by id

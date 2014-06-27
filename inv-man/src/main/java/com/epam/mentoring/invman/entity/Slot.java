@@ -26,6 +26,8 @@ public class Slot {
     private int columnNum;
     @Column(name = "capacity")
     private int capacity;
+    @Column(name = "blockId")
+    private long blockId;
 
     public int getRowNum() {
         return rowNum;
@@ -49,6 +51,14 @@ public class Slot {
 
     public void setCapacity(final int capacity) {
         this.capacity = capacity;
+    }
+
+    public long getBlockId() {
+        return blockId;
+    }
+
+    public void setBlockId(final long blockId) {
+        this.blockId = blockId;
     }
 
 }

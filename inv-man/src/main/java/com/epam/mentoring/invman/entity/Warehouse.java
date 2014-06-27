@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -18,9 +19,10 @@ public class Warehouse {
     @GeneratedValue
     @Column(name = "id")
     private long warehouseId;
-    @OneToOne(mappedBy = "warehouse")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "addressId")
     private Address address;
-    @OneToMany(mappedBy = "warehouse", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "warehouseId", cascade = CascadeType.ALL)
     private Set<Block> blocks;
 
     public long getWarehouseId() {

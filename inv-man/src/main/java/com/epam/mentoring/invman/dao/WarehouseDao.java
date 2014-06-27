@@ -3,14 +3,18 @@ package com.epam.mentoring.invman.dao;
 import java.util.Collection;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.epam.mentoring.invman.entity.Warehouse;
 
 public class WarehouseDao implements DataAccessObject<Warehouse> {
 
+    @Resource
     private SessionFactory sessionFactory;
 
     @Override
@@ -23,12 +27,11 @@ public class WarehouseDao implements DataAccessObject<Warehouse> {
 
     @SuppressWarnings("unchecked")
     @Override
-    public Collection<Warehouse> findAll() {
+    @Transactional
+    public Collection<Warehouse> listAll() {
         final Session session = sessionFactory.getCurrentSession();
-        session.beginTransaction();
         Query query = session.createQuery("from Warehouse");
         final List<Warehouse> warehouses = (List<Warehouse>) query.list();
-        session.getTransaction().commit();
         return warehouses;
     }
 
